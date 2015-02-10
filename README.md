@@ -1,5 +1,4 @@
 # SimpLog
-## Simple Logging for .NET
 
 ## What does SimpLog do?
 SimpLog is used to easily write Log files from your application without giving much thought to the underlying process.
