@@ -6,10 +6,10 @@ namespace MechMK1.SimpLog
 	/// Wrapper for Loggers. Only logs when the DEBUG flag is set with #define DEBUG
 	/// </summary>
 	/// <typeparam name="T">The logger to wrap</typeparam>
-	public class Debug<T> where T : Logger
+	public class Conditional<T> where T : Logger
 	{
 		private T logger;
-		public Debug(T logger)
+		public Conditional(T logger)
 		{
 			this.logger = logger;
 		}

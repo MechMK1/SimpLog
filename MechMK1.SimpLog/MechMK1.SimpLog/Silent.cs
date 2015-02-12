@@ -2,6 +2,10 @@
 
 namespace MechMK1.SimpLog
 {
+	/// <summary>
+	/// Wrapper for Loggers. Fails silently and catches ALL(!) Exceptions thrown in wrapped logger
+	/// </summary>
+	/// <typeparam name="T">The logger to wrap</typeparam>
 	public class Silent<T> where T : Logger
 	{
 		private T logger;
