@@ -31,7 +31,7 @@ namespace MechMK1.SimpLog
 		/// An example would be any information regarding the current state of the program, a class or a method.
 		/// </summary>
 		/// <param name="message">Debug message to write to log</param>
-		public virtual void Debug(string message)
+		public void Debug(string message)
 		{
 			Write(message, LogLevel.Debug);
 		}
@@ -42,7 +42,7 @@ namespace MechMK1.SimpLog
 		/// An example would be starting or stopping a service, configuration assumptions, etc.
 		/// </summary>
 		/// <param name="message">Info message to write to log</param>
-		public virtual void Info(string message)
+		public void Info(string message)
 		{
 			Write(message, LogLevel.Info);
 		}
@@ -52,7 +52,7 @@ namespace MechMK1.SimpLog
 		/// An example would be switching to backup servers, retrying operations, missing secondary data, etc.
 		/// </summary>
 		/// <param name="message">Warning message to write to log</param>
-		public virtual void Warning(string message)
+		public void Warning(string message)
 		{
 			Write(message, LogLevel.Warning);
 		}
@@ -63,7 +63,7 @@ namespace MechMK1.SimpLog
 		/// An example would be insufficient permissions, no network connectivity, etc.
 		/// </summary>
 		/// <param name="message">Error message to write to log</param>
-		public virtual void Error(string message)
+		public void Error(string message)
 		{
 			Write(message, LogLevel.Error);
 		}
@@ -74,7 +74,7 @@ namespace MechMK1.SimpLog
 		/// I wish you luck. You'll need it
 		/// </summary>
 		/// <param name="message">Your applications last words before it will lay down for eternal sleep</param>
-		public virtual void Fatal(string message)
+		public void Fatal(string message)
 		{
 			Write(message, LogLevel.Fatal);
 		}
