@@ -14,18 +14,6 @@ namespace MechMK1.SimpLog
 			this.logger = logger;
 		}
 
-		private void Write(string message, LogLevel level)
-		{
-			try
-			{
-				this.logger.Write(message, level);
-			}
-			catch (Exception)
-			{
-				// Nobody can hear your exceptions
-			}
-		}
-
 		/// <summary>
 		/// Log Debug-information which is diagnostically helpful to people closely involved to development of an application
 		/// An example would be any information regarding the current state of the program, a class or a method.
@@ -33,7 +21,14 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Debug message to write to log</param>
 		public void Debug(string message)
 		{
-			Write(message, LogLevel.Debug);
+			try
+			{
+				this.logger.Debug(message);
+			}
+			catch (Exception)
+			{
+				// Nobody can hear your exceptions
+			}
 		}
 
 		/// <summary>
@@ -44,7 +39,14 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Info message to write to log</param>
 		public void Info(string message)
 		{
-			Write(message, LogLevel.Info);
+			try
+			{
+				this.logger.Info(message);
+			}
+			catch (Exception)
+			{
+				// Nobody can hear your exceptions
+			}
 		}
 
 		/// <summary>
@@ -54,7 +56,14 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Warning message to write to log</param>
 		public void Warning(string message)
 		{
-			Write(message, LogLevel.Warning);
+			try
+			{
+				this.logger.Warning(message);
+			}
+			catch (Exception)
+			{
+				// Nobody can hear your exceptions
+			}
 		}
 
 		/// <summary>
@@ -65,7 +74,14 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Error message to write to log</param>
 		public void Error(string message)
 		{
-			Write(message, LogLevel.Error);
+			try
+			{
+				this.logger.Error(message);
+			}
+			catch (Exception)
+			{
+				// Nobody can hear your exceptions
+			}
 		}
 
 		/// <summary>
@@ -76,7 +92,14 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Your applications last words before it will lay down for eternal sleep</param>
 		public void Fatal(string message)
 		{
-			Write(message, LogLevel.Fatal);
+			try
+			{
+				this.logger.Fatal(message);
+			}
+			catch (Exception)
+			{
+				// Nobody can hear your exceptions
+			}
 		}
 	}
 }
