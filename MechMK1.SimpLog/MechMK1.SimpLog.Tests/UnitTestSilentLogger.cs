@@ -7,8 +7,12 @@ namespace MechMK1.SimpLog.Tests
 	public class UnitTestSilentLogger
 	{
 		[TestMethod]
-		public void TestMethod1()
+		[ExpectedException(typeof(NotImplementedException))]
+		public void TestMethodUncaughtException()
 		{
+			Logger l = new ExceptionLogger();
+			l.Debug("This will throw an exception");
+			Assert.Fail("This should not be reached");
 		}
 	}
 }

@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ExceptionLogger.cs" />
     <Compile Include="UnitTestConditionalLogger.cs" />
     <Compile Include="UnitTestSilentLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
