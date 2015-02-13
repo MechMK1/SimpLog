@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 
 namespace MechMK1.SimpLog.Tests
 {
@@ -7,8 +8,29 @@ namespace MechMK1.SimpLog.Tests
 	public class UnitTestConditionalLogger
 	{
 		[TestMethod]
-		public void TestMethod1()
+		public void TestMethodLogNormally()
 		{
+			Logger l = new ConsoleLogger();
+			l.Debug("This should be written");
+			string content = File.ReadAllLines("test.log")[0];
+			Assert.AreEqual<string>("This should be written", content);
 		}
+
+		[TestMethod]
+		public void TestMethodConditionalLog()
+		{
+			Assert.IsFalse(File.Exists("test.log"));
+			Conditional<Logger> c = new Conditional<Logger>(new ConsoleLogger());
+			c.Debug("This should not be displayed");
+			Assert.IsFalse(File.Exists("test.log"));
+		}
+
+		[TestInitialize]
+		[TestCleanup]
+		public void Prepare()
+		{
+			if(File.Exists("test.log")) File.Delete("test.log");
+		}
+
 	}
 }

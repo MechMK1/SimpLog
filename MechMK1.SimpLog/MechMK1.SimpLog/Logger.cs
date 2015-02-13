@@ -2,7 +2,7 @@
 {
     public abstract class Logger
     {
-		abstract protected void Write(string message, LogLevel level);
+		abstract protected internal void Write(string message, LogLevel level);
 
 		/// <summary>
 		/// Log Debug-information which is diagnostically helpful to people closely involved to development of an application

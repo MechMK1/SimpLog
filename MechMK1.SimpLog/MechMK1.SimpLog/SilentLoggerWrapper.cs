@@ -5,11 +5,10 @@ namespace MechMK1.SimpLog
 	/// <summary>
 	/// Wrapper for Loggers. Fails silently and catches ALL(!) Exceptions thrown in wrapped logger
 	/// </summary>
-	/// <typeparam name="T">The logger to wrap</typeparam>
-	public class Silent<T> where T : Logger
+	public class SilentLoggerWrapper : Logger
 	{
-		private T logger;
-		public Silent(T logger)
+		private Logger logger;
+		public SilentLoggerWrapper(Logger logger)
 		{
 			this.logger = logger;
 		}
@@ -19,7 +18,7 @@ namespace MechMK1.SimpLog
 		/// An example would be any information regarding the current state of the program, a class or a method.
 		/// </summary>
 		/// <param name="message">Debug message to write to log</param>
-		public void Debug(string message)
+		public override void Debug(string message)
 		{
 			try
 			{
@@ -37,7 +36,7 @@ namespace MechMK1.SimpLog
 		/// An example would be starting or stopping a service, configuration assumptions, etc.
 		/// </summary>
 		/// <param name="message">Info message to write to log</param>
-		public void Info(string message)
+		public override void Info(string message)
 		{
 			try
 			{
@@ -54,7 +53,7 @@ namespace MechMK1.SimpLog
 		/// An example would be switching to backup servers, retrying operations, missing secondary data, etc.
 		/// </summary>
 		/// <param name="message">Warning message to write to log</param>
-		public void Warning(string message)
+		public override void Warning(string message)
 		{
 			try
 			{
@@ -72,7 +71,7 @@ namespace MechMK1.SimpLog
 		/// An example would be insufficient permissions, no network connectivity, etc.
 		/// </summary>
 		/// <param name="message">Error message to write to log</param>
-		public void Error(string message)
+		public override void Error(string message)
 		{
 			try
 			{
@@ -90,11 +89,23 @@ namespace MechMK1.SimpLog
 		/// I wish you luck. You'll need it
 		/// </summary>
 		/// <param name="message">Your applications last words before it will lay down for eternal sleep</param>
-		public void Fatal(string message)
+		public override void Fatal(string message)
 		{
 			try
 			{
 				this.logger.Fatal(message);
+			}
+			catch (Exception)
+			{
+				// Nobody can hear your exceptions
+			}
+		}
+
+		protected internal override void Write(string message, LogLevel level)
+		{
+			try
+			{
+				this.logger.Write(message, level);
 			}
 			catch (Exception)
 			{

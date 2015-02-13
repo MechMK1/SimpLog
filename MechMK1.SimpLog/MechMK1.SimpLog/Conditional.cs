@@ -21,7 +21,7 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Debug message to write to log</param>
 		public void Debug(string message)
 		{
-			#if (DEBUG || LOG)
+			#if (LOG)
 			this.logger.Debug(message);
 			#endif
 		}
@@ -34,7 +34,7 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Info message to write to log</param>
 		public void Info(string message)
 		{
-			#if (DEBUG || LOG)
+			#if (LOG)
 			this.logger.Info(message);
 			#endif
 		}
@@ -46,7 +46,7 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Warning message to write to log</param>
 		public void Warning(string message)
 		{
-			#if (DEBUG || LOG)
+			#if (LOG)
 			this.logger.Warning(message);
 			#endif
 		}
@@ -59,7 +59,7 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Error message to write to log</param>
 		public void Error(string message)
 		{
-			#if (DEBUG || LOG)
+			#if (LOG)
 			this.logger.Error(message);
 			#endif
 		}
@@ -72,7 +72,7 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Your applications last words before it will lay down for eternal sleep</param>
 		public void Fatal(string message)
 		{
-			#if (DEBUG || LOG)
+			#if (LOG)
 			this.logger.Fatal(message);
 			#endif
 		}

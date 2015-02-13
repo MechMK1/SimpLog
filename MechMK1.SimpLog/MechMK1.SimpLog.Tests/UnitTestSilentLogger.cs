@@ -18,7 +18,7 @@ namespace MechMK1.SimpLog.Tests
 		[TestMethod]
 		public void TestMethodSilentException()
 		{
-			Silent<Logger> s = new Silent<Logger>(new ExceptionLogger());
+			SilentLoggerWrapper s = new SilentLoggerWrapper(new ExceptionLogger());
 			s.Debug("This will fail silently");
 		}
 	}
