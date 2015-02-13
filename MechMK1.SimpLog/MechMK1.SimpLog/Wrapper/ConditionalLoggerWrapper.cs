@@ -5,13 +5,20 @@ namespace MechMK1.SimpLog
 	/// <summary>
 	/// Wrapper for Loggers. Only logs when the DEBUG or LOG flag is set with #define DEBUG
 	/// </summary>
-	/// <typeparam name="T">The logger to wrap</typeparam>
-	public class Conditional<T> where T : Logger
+	public class ConditionalLoggerWrapper : Logger
 	{
-		private T logger;
-		public Conditional(T logger)
+		private Logger logger;
+		public bool WriteLog { get; set; }
+		public ConditionalLoggerWrapper(Logger logger)
+			: this(logger, true)
+		{
+
+		}
+
+		public ConditionalLoggerWrapper(Logger logger, bool writeLog)
 		{
 			this.logger = logger;
+			this.WriteLog = writeLog;
 		}
 
 		/// <summary>
@@ -21,9 +28,8 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Debug message to write to log</param>
 		public void Debug(string message)
 		{
-			#if (LOG)
-			this.logger.Debug(message);
-			#endif
+			if (WriteLog)
+				this.logger.Debug(message);
 		}
 
 		/// <summary>
@@ -34,9 +40,8 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Info message to write to log</param>
 		public void Info(string message)
 		{
-			#if (LOG)
-			this.logger.Info(message);
-			#endif
+			if (WriteLog)
+				this.logger.Info(message);
 		}
 
 		/// <summary>
@@ -46,9 +51,8 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Warning message to write to log</param>
 		public void Warning(string message)
 		{
-			#if (LOG)
-			this.logger.Warning(message);
-			#endif
+			if (WriteLog)
+				this.logger.Warning(message);
 		}
 
 		/// <summary>
@@ -59,9 +63,8 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Error message to write to log</param>
 		public void Error(string message)
 		{
-			#if (LOG)
-			this.logger.Error(message);
-			#endif
+			if (WriteLog)
+				this.logger.Error(message);
 		}
 
 		/// <summary>
@@ -72,9 +75,14 @@ namespace MechMK1.SimpLog
 		/// <param name="message">Your applications last words before it will lay down for eternal sleep</param>
 		public void Fatal(string message)
 		{
-			#if (LOG)
-			this.logger.Fatal(message);
-			#endif
+			if (WriteLog)
+				this.logger.Fatal(message);
+		}
+
+		protected internal override void Write(string message, LogLevel level)
+		{
+			if (WriteLog)
+				this.logger.Write(message, level);
 		}
 	}
 }
