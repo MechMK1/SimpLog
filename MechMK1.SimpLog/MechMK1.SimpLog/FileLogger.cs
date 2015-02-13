@@ -8,21 +8,46 @@ using System.Threading.Tasks;
 
 namespace MechMK1.SimpLog
 {
+	/// <summary>
+	/// Logger to write to files
+	/// </summary>
 	public class FileLogger : Logger
 	{
+		/// <summary>
+		/// Path to log file
+		/// </summary>
 		public string Path { get; set; }
+
+		/// <summary>
+		/// Encoding to use. Default is UTF-8
+		/// </summary>
 		public Encoding Encoding { get; set; }
 
+		/// <summary>
+		/// Initializes a new instance of the FileLogger class for the specified file path, with default UTF-8 encoding.
+		/// </summary>
+		/// <param name="path">A relative or absolute path for the logfile</param>
 		public FileLogger(string path) : this(path, defaultEncoding)
 		{
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the FileLogger class for the specified file path, with specified encoding.
+		/// </summary>
+		/// <param name="path">A relative or absolute path for the logfile</param>
+		/// <param name="encoding">The encoding to use when writing the logfile</param>
 		public FileLogger(string path, Encoding encoding)
 		{
 			this.Path = path;
 			this.Encoding = encoding;
 		}
 
+		/// <summary>
+		/// Actually writes to the logfile. Logfile will be created if it does not exist.
+		/// </summary>
+		/// <exception cref="System.IO.IOException">Thrown when shit goes down</exception>
+		/// <param name="message">Log message to write to the logfile</param>
+		/// <param name="level">Attached parameter to write to the logfile</param>
 		protected internal override void Write(string message, LogLevel level)
 		{
 			File.AppendAllText(
