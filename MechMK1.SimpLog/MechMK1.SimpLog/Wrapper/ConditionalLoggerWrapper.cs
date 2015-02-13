@@ -26,7 +26,7 @@ namespace MechMK1.SimpLog
 		/// An example would be any information regarding the current state of the program, a class or a method.
 		/// </summary>
 		/// <param name="message">Debug message to write to log</param>
-		public void Debug(string message)
+		public override void Debug(string message)
 		{
 			if (WriteLog)
 				this.logger.Debug(message);
@@ -38,7 +38,7 @@ namespace MechMK1.SimpLog
 		/// An example would be starting or stopping a service, configuration assumptions, etc.
 		/// </summary>
 		/// <param name="message">Info message to write to log</param>
-		public void Info(string message)
+		public override void Info(string message)
 		{
 			if (WriteLog)
 				this.logger.Info(message);
@@ -49,7 +49,7 @@ namespace MechMK1.SimpLog
 		/// An example would be switching to backup servers, retrying operations, missing secondary data, etc.
 		/// </summary>
 		/// <param name="message">Warning message to write to log</param>
-		public void Warning(string message)
+		public override void Warning(string message)
 		{
 			if (WriteLog)
 				this.logger.Warning(message);
@@ -61,7 +61,7 @@ namespace MechMK1.SimpLog
 		/// An example would be insufficient permissions, no network connectivity, etc.
 		/// </summary>
 		/// <param name="message">Error message to write to log</param>
-		public void Error(string message)
+		public override void Error(string message)
 		{
 			if (WriteLog)
 				this.logger.Error(message);
@@ -73,7 +73,7 @@ namespace MechMK1.SimpLog
 		/// I wish you luck. You'll need it
 		/// </summary>
 		/// <param name="message">Your applications last words before it will lay down for eternal sleep</param>
-		public void Fatal(string message)
+		public override void Fatal(string message)
 		{
 			if (WriteLog)
 				this.logger.Fatal(message);

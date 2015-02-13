@@ -20,7 +20,7 @@ namespace MechMK1.SimpLog.Tests
 		public void TestMethodConditionalLog()
 		{
 			Assert.IsFalse(File.Exists("test.log"));
-			Conditional<Logger> c = new Conditional<Logger>(new ConsoleLogger());
+			ConditionalLoggerWrapper c = new ConditionalLoggerWrapper(new ConsoleLogger(), false);
 			c.Debug("This should not be displayed");
 			Assert.IsFalse(File.Exists("test.log"));
 		}
