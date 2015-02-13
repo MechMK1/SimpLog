@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileLogger.cs" />
     <Compile Include="Wrapper\ConditionalLoggerWrapper.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="LogLevel.cs" />

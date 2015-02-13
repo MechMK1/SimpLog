@@ -53,6 +53,7 @@
     <Compile Include="ConsoleLogger.cs" />
     <Compile Include="ExceptionLogger.cs" />
     <Compile Include="UnitTestConditionalLogger.cs" />
+    <Compile Include="UnitTestFileLogger.cs" />
     <Compile Include="UnitTestSilentLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
