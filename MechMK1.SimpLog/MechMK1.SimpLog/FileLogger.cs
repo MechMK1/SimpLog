@@ -50,11 +50,14 @@ namespace MechMK1.SimpLog
 		/// <param name="level">Attached parameter to write to the logfile</param>
 		protected internal override void Write(string message, LogLevel level)
 		{
-			File.AppendAllText(
-				this.Path,
-				GetFormattedMessage(message, level),
-				this.Encoding
-			);
+			if (ShouldLog(level))
+			{
+				File.AppendAllText(
+					this.Path,
+					GetFormattedMessage(message, level),
+					this.Encoding
+				);
+			}
 		}
 
 		#region Helpers

@@ -2,6 +2,7 @@
 {
     public abstract class Logger
     {
+		public LogLevel MinimumLogLevel { get; set; }
 		abstract protected internal void Write(string message, LogLevel level);
 
 		/// <summary>
@@ -55,6 +56,16 @@
 		public virtual void Fatal(string message)
 		{
 			Write(message, LogLevel.Fatal);
+		}
+
+		public bool ShouldLog(LogLevel level)
+		{
+			if (this.MinimumLogLevel == 0) //Default value
+			{
+				return level >= LogLevel.Info; // Make Info the default level;
+			}
+			
+			return level >= this.MinimumLogLevel;
 		}
     }
 }
