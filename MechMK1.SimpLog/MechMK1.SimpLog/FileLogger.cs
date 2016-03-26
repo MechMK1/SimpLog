@@ -24,22 +24,44 @@ namespace MechMK1.SimpLog
 		public Encoding Encoding { get; set; }
 
 		/// <summary>
-		/// Initializes a new instance of the FileLogger class for the specified file path, with default UTF-8 encoding.
+		/// Initializes a new instance of the FileLogger class for the specified file path, with Info LogLevel and UTF-8 encoding.
 		/// </summary>
 		/// <param name="path">A relative or absolute path for the logfile</param>
 		public FileLogger(string path) : this(path, defaultEncoding)
 		{
 		}
 
+
+
 		/// <summary>
-		/// Initializes a new instance of the FileLogger class for the specified file path, with specified encoding.
+		/// Initializes a new instance of the FileLogger class for the specified file path, with specified LogLevel and UTF-8 encoding.
+		/// </summary>
+		/// <param name="path">A relative or absolute path for the logfile</param>
+		/// <param name="logLevel">The minimum LogLevel to write</param>
+		public FileLogger(string path, LogLevel logLevel) : this(path, logLevel, defaultEncoding)
+		{
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the FileLogger class for the specified file path, with Info LogLevel and specified encoding.
 		/// </summary>
 		/// <param name="path">A relative or absolute path for the logfile</param>
 		/// <param name="encoding">The encoding to use when writing the logfile</param>
-		public FileLogger(string path, Encoding encoding)
+		public FileLogger(string path, Encoding encoding) : this(path, LogLevel.Info, encoding)
+		{
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the FileLogger class for the specified file path, LogLevel and encoding.
+		/// </summary>
+		/// <param name="path">A relative or absolute path for the logfile</param>
+		/// <param name="logLevel">The minimum LogLevel to write</param>
+		/// <param name="encoding">The encoding to use when writing the logfile</param>
+		public FileLogger(string path, LogLevel logLevel, Encoding encoding)
 		{
 			this.Path = path;
 			this.Encoding = encoding;
+			this.MinimumLogLevel = logLevel;
 		}
 
 		/// <summary>
